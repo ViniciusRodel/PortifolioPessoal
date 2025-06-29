@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio profissional de Vinícius Rödel - Desenvolvedor Web">
+    <title>Portfólio - Vinícius Rödel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== RESET E ESTILOS GERAIS ===== */
+        /* Reset para garantir consistência entre navegadores */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variáveis CSS com tema laranja */
+        :root {
+            --primary: #e67e22;       /* Laranja principal */
+            --secondary: #f39c12;     /* Laranja secundário */
+            --accent: #d35400;        /* Laranja escuro para destaque */
+            --light: #fef5eb;         /* Fundo claro com tom laranja suave */
+            --dark: #7e5109;          /* Marrom escuro para textos */
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container principal com largura máxima */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== CABEÇALHO E NAVEGAÇÃO ===== */
+        header {
+            background-color: var(--primary);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            color: var(--light);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Indicador visual para link ativo */
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--light);
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        /* ===== SEÇÕES COMUNS ===== */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 80px;
+            /* Espaço para o cabeçalho fixo */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        /* ===== SEÇÃO SOBRE MIM ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: var(--light);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== SEÇÃO FORMAÇÃO ===== */
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .education-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .education-card .date {
+            display: block;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        /* ===== SEÇÃO PORTFÓLIO ===== */
+        .portfolio {
+            background-color: #f7e9d5;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--secondary);
+        }
+
+        .portfolio-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .portfolio-content p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            text-align: center;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        .portfolio-content a:hover,
+        .portfolio-content a:focus {
+            background-color: var(--accent);
+            outline: none;
+        }
+
+        /* ===== SEÇÃO CONTATO ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            min-width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1rem;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+
+        button:hover,
+        button:focus {
+            background-color: var(--accent);
+            outline: none;
+        }
+
+        /* Feedback de envio do formulário */
+        #formFeedback {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background-color: var(--accent);
+            color: var(--light);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                margin: 0 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-container {
+                gap: 30px;
+            }
+        }
+
+        /* Menu responsivo - Ícone hamburguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Animação de scroll suave para as seções */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Esconder conteúdo visualmente, mas disponível para leitores de tela */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cabeçalho com menu de navegação acessível -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Meu Portifólio</a>
+                <ul class="nav-links">
+                    <li><a href="#sobre" class="active">Sobre Mim</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero/Sobre Mim -->
+    <section id="sobre" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-img fade-in">
+                    <img src="https://scontent.fpoa11-1.fna.fbcdn.net/v/t1.6435-1/60978790_1978092645634915_3354604457311600640_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeGLg1qFA_4OKfMjvevkiozbCS1MNGUJ2UUJLUw0ZQnZReO7PoM-75zup8r6f4YAILoHU3uGt-kzp7bo_2m9hSqI&_nc_ohc=cfTsFy9ATloQ7kNvwFB6o82&_nc_oc=AdkLVBykyy-7sKuzBSPmNIcFl6Nl6a3iJh6PlRXlNXE1z1A5S75mXnh67xHhCA2vyL2N9lZbhfuc-aBoAZHIp6rS&_nc_zt=24&_nc_ht=scontent.fpoa11-1.fna&_nc_gid=N5_K2Nj7PnvMVqW_SO8_2w&oh=00_AfP28ax6xw6Sx0AVMLENaltjssViS2g3qMiPwauw-mPFqg&oe=68804082"
+                        alt="Vinícius Rödel - Desenvolvedor Web">
+                </div>
+                <h1 class="fade-in delay-1">Vinícius Rödel da Silva</h1>
+                <p class="fade-in delay-1">Programador de Sistemas</p>
+                <div class="fade-in delay-2">
+                    <p>
+                        Sou um apaixonado por tecnologia e desenvolvimento web, com experiência em criar soluções
+                        digitais
+                        inovadoras e funcionais. Meu foco é combinar design atrativo com funcionalidade robusta para
+                        proporcionar a melhor experiência ao usuário.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <strong>Hobbies:</strong> Economia, leitura de ficção científica, jogos de tabuleiro e
+                        aprender novas tecnologias. Atualmente estou explorando desenvolvimento de jogos com Unity e
+                        aprofundando meus conhecimentos em React.js.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Formação Educacional -->
+    <section id="formacao">
+        <div class="container">
+            <h2 class="section-title">Formação Educacional</h2>
+            <div class="education-container">
+                <div class="education-card fade-in">
+                    <h3>Análise e Desenvolvimento de Sistemas</h3>
+                    <span class="date">2024 - 2026 (cursando)</span>
+                    <p><strong>Centro Universitário Internacional - UNINTER</strong></p>
+                    <p>Curso com ênfase em desenvolvimento web, banco de dados e inteligência artificial.
+                        Disciplinas relevantes: Arquitetura de Software, Desenvolvimento Web Avançado,
+                        Inteligência Artificial Aplicada.</p>
+                </div>
+
+                <div class="education-card fade-in delay-1">
+                    <h3>Desenvolvimento Front-end</h3>
+                    <span class="date">2022 - 2023</span>
+                    <p><strong>Digital Innovation One</strong></p>
+                    <p>Especialização com mais de 200 horas em tecnologias front-end modernas, incluindo:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>React.js e ecossistema (Redux, Context API)</li>
+                        <li>JavaScript ES6+</li>
+                        <li>Design Responsivo e Mobile First</li>
+                        <li>Consumo de APIs REST</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="education-card fade-in delay-2">
+                    <h3>Idiomas</h3>
+                    <div style="margin-top: 15px;">
+                        <p><strong>Português</strong> <span class="date">Nativo</span></p>
+                        <p><strong>Inglês</strong> <span class="date">Avançado</span></p>
+                        <p><strong>Espanhol</strong> <span class="date">Intermediário</span></p>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        <strong>Certificações:</strong> Scrum Fundamentals Certified (SFC),
+                        AWS Cloud Practitioner (em andamento).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Portfólio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfólio Profissional</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-img" style="background-color: #e67e22;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce Responsivo</h3>
+                        <p>Loja virtual completa desenvolvida com React.js, Node.js e MongoDB.
+                            Inclui sistema de carrinho, checkout integrado com PagSeguro,
+                            e painel administrativo para gerenciamento de produtos.</p>
+                        <a href="https://exemplo-ecommerce.com" target="_blank" rel="noopener">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-in delay-1">
+                    <div class="portfolio-img" style="background-color: #f39c12;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>App de Finanças Pessoais</h3>
+                        <p>Aplicativo mobile para controle de gastos desenvolvido com React Native.
+                            Funcionalidades: categorização de despesas, relatórios gráficos,
+                            alertas de orçamento e sincronização em nuvem.</p>
+                        <a href="https://exemplo-financas.com" target="_blank" rel="noopener">Ver Projeto</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-in delay-2">
+                    <div class="portfolio-img" style="background-color: #d35400;">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Plataforma de Conteúdo</h3>
+                        <p>Sistema de gerenciamento de conteúdo para blog com painel administrativo,
+                            editor markdown, sistema de comentários e SEO integrado.
+                            Desenvolvido com Next.js e Strapi.</p>
+                        <a href="https://exemplo-blog.com" target="_blank" rel="noopener">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato com formulário acessível -->
+    <section id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <div class="contact-text">
+                            <h4>Localização</h4>
+                            <p>Novo Hamburgo, RS, Brasil</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>vinirodel@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <div class="contact-text">
+                            <h4>Telefone</h4>
+                            <p>+55 (51) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <div class="contact-text">
+                            <h4>Disponibilidade</h4>
+                            <p>Segunda a Sexta: 9h - 18h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form fade-in delay-1">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="formContato">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit">Enviar Mensagem</button>
+                    </form>
+                    <div id="formFeedback"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé com informações de direitos -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/vin%C3%ADcius-r%C3%B6del-da-silva-4b48611a4/"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/seuusuario" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/vinirodel/" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/seuusuario" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Vinícius Rödel da Silva. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    Desenvolvido com HTML5, CSS3 e JavaScript
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MENU RESPONSIVO =====
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ===== VALIDAÇÃO DO FORMULÁRIO =====
+        const formContato = document.getElementById('formContato');
+        const formFeedback = document.getElementById('formFeedback');
+
+        formContato.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validação básica
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            if (!nome || !email || !mensagem) {
+                showFeedback('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                showFeedback('Por favor, insira um endereço de email válido.', 'error');
+                return;
+            }
+
+            // Simulação de envio bem-sucedido
+            showFeedback(`Obrigado, ${nome}! Sua mensagem foi enviada com sucesso. Entrarei em contato em breve.`, 'success');
+
+            // Limpar formulário após 3 segundos
+            setTimeout(() => {
+                formContato.reset();
+                formFeedback.style.display = 'none';
+            }, 5000);
+        });
+
+        function showFeedback(message, type) {
+            formFeedback.textContent = message;
+            formFeedback.className = type;
+            formFeedback.style.display = 'block';
+
+            // Foco no feedback para leitores de tela
+            formFeedback.focus();
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // ===== ATUALIZAÇÃO DO MENU ATIVO AO ROLAR =====
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ===== ANIMAÇÃO DE SCROLL =====
+        // Observador para animar elementos quando entram na viewport
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos com a classe 'fade-in' inicialmente sem animação
+        document.querySelectorAll('.fade-in:not(.hero-content *)').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
